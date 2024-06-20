@@ -1,11 +1,11 @@
-import React from "react";
-import "./styles.scss";
-import PrimeIcon from "../../assets/amazonIcon.png";
-import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
-import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
-import { Link } from "react-router-dom";
+import React from 'react';
+import './styles.scss';
+import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
+import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
+import { Link } from 'react-router-dom';
+import PrimeIcon from '../../assets/amazonIcon.png';
 
-const Header = () => {
+function Header() {
   return (
     <div className="header">
       <div className="iconDiv">
@@ -19,7 +19,7 @@ const Header = () => {
             </a>
           </div>
           <div className="navLinks">
-            <Link to={`/tvShows`}>
+            <Link to="/tvShows">
               <div className="textLink">TV Shows</div>
             </Link>
           </div>
@@ -53,6 +53,6 @@ const Header = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Header;

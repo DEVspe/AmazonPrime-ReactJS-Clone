@@ -1,65 +1,65 @@
-const API_KEY = "989a8027930013244e3c2af17088dcac";
+const API_KEY = '989a8027930013244e3c2af17088dcac';
 
 const requests = [
   {
-    title: "Discover",
+    title: 'Discover',
     url: `/discover/movie?api_key=${API_KEY}`,
-    media: "movie",
+    media: 'movie',
   },
   {
-    title: "Comedy",
+    title: 'Comedy',
     url: `/discover/movie?api_key=${API_KEY}&with_genres=35`,
-    media: "movie",
+    media: 'movie',
   },
   {
-    title: "Action",
+    title: 'Action',
     url: `/discover/movie?api_key=${API_KEY}&with_genres=28`,
-    media: "movie",
+    media: 'movie',
   },
   {
-    title: "Adventure",
+    title: 'Adventure',
     url: `/discover/movie?api_key=${API_KEY}&with_genres=12`,
-    media: "movie",
+    media: 'movie',
   },
   {
-    title: "Science Fiction",
+    title: 'Science Fiction',
     url: `/discover/movie?api_key=${API_KEY}&with_genres=878`,
-    media: "movie",
+    media: 'movie',
   },
   {
-    title: "Horror",
+    title: 'Horror',
     url: `/discover/movie?api_key=${API_KEY}&with_genres=27`,
-    media: "movie",
+    media: 'movie',
   },
   {
-    title: "Drama",
+    title: 'Drama',
     url: `/discover/movie?api_key=${API_KEY}&with_genres=18`,
-    media: "movie",
+    media: 'movie',
   },
   {
-    title: "Popular in your Region",
+    title: 'Popular in your Region',
     url: `/discover/movie?api_key=${API_KEY}&region=IN`,
-    media: "movie",
+    media: 'movie',
   },
   {
-    title: "Will Smith's Hits",
+    title: 'Will Smith\'s Hits',
     url: `/discover/movie?api_key=${API_KEY}&with_people=2888`,
-    media: "movie",
+    media: 'movie',
   },
   {
-    title: "Thriller",
+    title: 'Thriller',
     url: `/discover/movie?api_key=${API_KEY}&with_genres=53`,
-    media: "movie",
+    media: 'movie',
   },
   {
-    title: "Crime",
+    title: 'Crime',
     url: `/discover/movie?api_key=${API_KEY}&with_genres=80`,
-    media: "movie",
+    media: 'movie',
   },
   {
-    title: "Short Films",
+    title: 'Short Films',
     url: `/discover/movie?api_key=${API_KEY}&with_runtime.lte=70`,
-    media: "movie",
+    media: 'movie',
   },
 ];
 

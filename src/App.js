@@ -1,17 +1,17 @@
-import React from "react";
-import "./App.css";
-import Header from "./components/Header";
-import Home from "./components/Home/index";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import AllContent from "./components/AllContent";
-import Movie from "./components/Movie/index";
-import requests from "./requests";
-import tvrequests from "./tvRequests";
-import homeRequests from "./homeRequests";
-import TV from "./components/TV/index";
+import React from 'react';
+import './App.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Header from './components/Header';
+import Home from './components/Home/index';
+import AllContent from './components/AllContent';
+import Movie from './components/Movie/index';
+import requests from './requests';
+import tvrequests from './tvRequests';
+import homeRequests from './homeRequests';
+import TV from './components/TV/index';
 
 function App() {
-  const api_key = "989a8027930013244e3c2af17088dcac";
+  const api_key = '989a8027930013244e3c2af17088dcac';
   return (
     <Router>
       <div className="App">
@@ -41,7 +41,7 @@ function App() {
                 <Home
                   api_key={api_key}
                   requests={requests}
-                  slideShowUrl={`https://api.themoviedb.org/3/movie/popular?api_key=989a8027930013244e3c2af17088dcac&language=en-US&page=1`}
+                  slideShowUrl="https://api.themoviedb.org/3/movie/popular?api_key=989a8027930013244e3c2af17088dcac&language=en-US&page=1"
                 />
               )}
             />
@@ -52,7 +52,7 @@ function App() {
                 <Home
                   api_key={api_key}
                   requests={tvrequests}
-                  slideShowUrl={`https://api.themoviedb.org/3/tv/popular?api_key=989a8027930013244e3c2af17088dcac&language=en-US&page=1`}
+                  slideShowUrl="https://api.themoviedb.org/3/tv/popular?api_key=989a8027930013244e3c2af17088dcac&language=en-US&page=1"
                 />
               )}
             />

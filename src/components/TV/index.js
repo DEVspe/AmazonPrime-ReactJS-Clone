@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react";
-import "./styles.scss";
-import axios from "../../axios";
-import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
-import PlayCircleFilledWhiteIcon from "@material-ui/icons/PlayCircleFilledWhite";
-import ChangeHistoryIcon from "@material-ui/icons/ChangeHistory";
-import GetAppIcon from "@material-ui/icons/GetApp";
-import Button from "@material-ui/core/Button";
-import MediaScreen from "../MediaScreen";
-import CancelIcon from "@material-ui/icons/Cancel";
-import IconButton from "@material-ui/core/IconButton";
-import YouTube from "react-youtube";
-import Episode from "../Episode/index";
+import React, { useState, useEffect } from 'react';
+import './styles.scss';
+import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
+import PlayCircleFilledWhiteIcon from '@material-ui/icons/PlayCircleFilledWhite';
+import ChangeHistoryIcon from '@material-ui/icons/ChangeHistory';
+import GetAppIcon from '@material-ui/icons/GetApp';
+import Button from '@material-ui/core/Button';
+import CancelIcon from '@material-ui/icons/Cancel';
+import IconButton from '@material-ui/core/IconButton';
+import YouTube from 'react-youtube';
+import MediaScreen from '../MediaScreen';
+import axios from '../../axios';
+import Episode from '../Episode/index';
 
-const TV = ({ api_key }) => {
+function TV({ api_key }) {
   const [credits, setCredits] = useState();
   const [movieDetails, setDetails] = useState();
   const [videos, setVideo] = useState();
@@ -21,38 +21,39 @@ const TV = ({ api_key }) => {
   const [trailer_id, setTrailer_id] = useState();
   const [episodes, setEpisodes] = useState();
   const [seasonCount, setseasonCount] = useState();
-  const base_url = "https://api.themoviedb.org/3/tv/";
+  const base_url = 'https://api.themoviedb.org/3/tv/';
   let detailsLoaded = false;
   let creditsLoaded = false;
-  let hours, minutes;
-  let director = [];
-  let crew = [];
-  let writing = [];
-  let production = [];
+  let hours; let
+    minutes;
+  const director = [];
+  const crew = [];
+  const writing = [];
+  const production = [];
   const opts = {
-    width: "100%",
-    minHeight: "200%",
-    paddingTop: "56.25%", // Percentage ratio for 16:9
-    position: "absolute",
+    width: '100%',
+    minHeight: '200%',
+    paddingTop: '56.25%', // Percentage ratio for 16:9
+    position: 'absolute',
     playerVars: {
       autoplay: 1,
-      listType: "user_uploads",
+      listType: 'user_uploads',
     },
   };
 
   const urlParams = new URLSearchParams(window.location.search);
-  const movie_id = urlParams.get("id");
+  const movie_id = urlParams.get('id');
 
-  const image_base_url = "https://image.tmdb.org/t/p/original/";
+  const image_base_url = 'https://image.tmdb.org/t/p/original/';
 
   useEffect(() => {
     async function fetchDetails() {
       const response = await axios.get(
-        `${base_url}${movie_id}?api_key=${api_key}`
+        `${base_url}${movie_id}?api_key=${api_key}`,
       );
 
       const temp = response.data.number_of_seasons;
-      var tempArr = [];
+      const tempArr = [];
       for (let i = 1; i <= temp; i++) {
         tempArr.push(i);
       }
@@ -63,21 +64,21 @@ const TV = ({ api_key }) => {
     }
     async function fetchCredits() {
       const response = await axios.get(
-        `${base_url}${movie_id}/credits?api_key=${api_key}`
+        `${base_url}${movie_id}/credits?api_key=${api_key}`,
       );
 
       setCredits(response.data);
     }
     async function getVideo() {
       const response = await axios.get(
-        `${base_url}${movie_id}/videos?api_key=${api_key}`
+        `${base_url}${movie_id}/videos?api_key=${api_key}`,
       );
 
       setVideo(response.data.results);
     }
     async function getDefaultEpisodes() {
       const response = await axios.get(
-        `${base_url}${movie_id}/season/1?api_key=${api_key}`
+        `${base_url}${movie_id}/season/1?api_key=${api_key}`,
       );
 
       setEpisodes(response.data.episodes);
@@ -100,10 +101,10 @@ const TV = ({ api_key }) => {
   };
 
   async function getEpisodes() {
-    const temp = document.getElementById("selectIdTag").value;
+    const temp = document.getElementById('selectIdTag').value;
     const val = temp.substr(7, 8);
     const response = await axios.get(
-      `${base_url}${movie_id}/season/${val}?api_key=${api_key}`
+      `${base_url}${movie_id}/season/${val}?api_key=${api_key}`,
     );
 
     setEpisodes(response.data.episodes);
@@ -115,13 +116,13 @@ const TV = ({ api_key }) => {
   if (credits) {
     creditsLoaded = true;
     credits.crew.map((person) => {
-      if (person.known_for_department === "Directing") {
+      if (person.known_for_department === 'Directing') {
         director.push(person.name);
-      } else if (person.known_for_department === "Production") {
+      } else if (person.known_for_department === 'Production') {
         production.push(person.name);
-      } else if (person.known_for_department === "Writing") {
+      } else if (person.known_for_department === 'Writing') {
         writing.push(person.name);
-      } else if (person.known_for_department === "Crew") {
+      } else if (person.known_for_department === 'Crew') {
         crew.push(person.name);
       }
       return person.name;
@@ -159,30 +160,33 @@ const TV = ({ api_key }) => {
                       getEpisodes();
                     }}
                   >
-                    {seasonCount.map((val) => {
-                      return (
-                        <option className="optionTag">Season {val}</option>
-                      );
-                    })}
+                    {seasonCount.map((val) => (
+                      <option className="optionTag">
+                        Season
+                        {val}
+                      </option>
+                    ))}
                   </select>
                 ) : (
-                  <div></div>
+                  <div />
                 )}
               </div>
               <div className="movierating">
-                IMDb {movieDetails.vote_average}
+                IMDb
+                {' '}
+                {movieDetails.vote_average}
               </div>
               <div className="movierunTime">
-                {hours > 0 ? `${hours}h ` : ""}
-                {minutes > 0 ? `${minutes}min` : ""}
+                {hours > 0 ? `${hours}h ` : ''}
+                {minutes > 0 ? `${minutes}min` : ''}
               </div>
               <div className="moviereleaseYear">
                 {movieDetails.first_air_date
                   ? movieDetails.first_air_date.substr(0, 4)
-                  : ""}
+                  : ''}
               </div>
               <div className="movierated">
-                {movieDetails.adult ? "18+" : "ALL"}
+                {movieDetails.adult ? '18+' : 'ALL'}
               </div>
               <div>
                 <ChatBubbleIcon className="moviemessageIcon" fontSize="large" />
@@ -193,13 +197,13 @@ const TV = ({ api_key }) => {
                 <Button
                   color="primary"
                   className="playmovieButton"
-                  startIcon={
+                  startIcon={(
                     <PlayCircleFilledWhiteIcon
                       fontSize="large"
                       color="primary"
                       className="moviePlayIcon"
                     />
-                  }
+                  )}
                 >
                   <text className="moviePlayText">Play</text>
                 </Button>
@@ -243,7 +247,7 @@ const TV = ({ api_key }) => {
                 <div className="peopleHeading">Starring</div>
                 <div className="peopleVal">
                   {credits.cast.map((person) => {
-                    let str = "";
+                    let str = '';
                     if (credits.cast.indexOf(person) < 11) {
                       str = `${person.name}, `;
                     }
@@ -253,13 +257,13 @@ const TV = ({ api_key }) => {
                 <div className="peopleHeading">Genres</div>
                 <div className="peopleVal">
                   {movieDetails.genres.map((genre) => {
-                    let str = `${genre.name}, `;
+                    const str = `${genre.name}, `;
                     return str;
                   })}
                 </div>
               </div>
             ) : (
-              <div></div>
+              <div />
             )}
           </div>
           <div className="imageDiv">
@@ -269,11 +273,11 @@ const TV = ({ api_key }) => {
               alt={movieDetails.id}
             />
           </div>
-          <div className="divImage1"></div>
-          <div className="divImage2"></div>
+          <div className="divImage1" />
+          <div className="divImage2" />
         </div>
       ) : (
-        <div></div>
+        <div />
       )}
 
       {YoutubePlay ? (
@@ -296,12 +300,12 @@ const TV = ({ api_key }) => {
             videoId={trailer_id}
             opts={opts}
             onError={() => {
-              alert("Youtube Not working");
+              alert('Youtube Not working');
             }}
           />
         </div>
       ) : (
-        <div></div>
+        <div />
       )}
       <div className="relatedMovies">
         <div className="tabHeading">
@@ -309,7 +313,7 @@ const TV = ({ api_key }) => {
             onClick={() => {
               setShow(2);
             }}
-            className={detailShow === 2 ? "activeRelated" : ""}
+            className={detailShow === 2 ? 'activeRelated' : ''}
           >
             Episodes
           </div>
@@ -317,7 +321,7 @@ const TV = ({ api_key }) => {
             onClick={() => {
               setShow(1);
             }}
-            className={detailShow === 1 ? "activeRelated" : ""}
+            className={detailShow === 1 ? 'activeRelated' : ''}
           >
             Related
           </div>
@@ -325,7 +329,7 @@ const TV = ({ api_key }) => {
             onClick={() => {
               setShow(0);
             }}
-            className={detailShow === 0 ? "activeDetails" : ""}
+            className={detailShow === 0 ? 'activeDetails' : ''}
           >
             Details
           </div>
@@ -340,66 +344,65 @@ const TV = ({ api_key }) => {
               API_KEY={api_key}
               fetchURL={`https://api.themoviedb.org/3/movie/${movieDetails.id}/similar?api_key=${api_key}&language=en-US&page=1`}
             />
-          )}{" "}
+          )}
+          {' '}
           {detailsLoaded && detailShow === 0 && (
             <div className="detailsCrew">
               <div className="people">
                 {production.length > 0 ? (
                   <div className="peopleHeading">Production</div>
                 ) : (
-                  <div></div>
+                  <div />
                 )}
                 {production.length > 0 ? (
                   <div className="peopleVal">
                     {production.map((person) => {
-                      let str = `${person}, `;
+                      const str = `${person}, `;
                       return str;
                     })}
                   </div>
                 ) : (
-                  <div></div>
+                  <div />
                 )}
                 {writing.length > 0 ? (
                   <div className="peopleHeading">Writing</div>
                 ) : (
-                  <div></div>
+                  <div />
                 )}
                 {writing.length > 0 ? (
                   <div className="peopleVal">
                     {writing.map((person) => {
-                      let str = `${person}, `;
+                      const str = `${person}, `;
                       return str;
                     })}
                   </div>
                 ) : (
-                  <div></div>
+                  <div />
                 )}
                 {crew.length > 0 ? (
                   <div className="peopleHeading">Crew</div>
                 ) : (
-                  <div></div>
+                  <div />
                 )}
                 {crew.length > 0 ? (
                   <div className="peopleVal">
                     {crew.map((person) => {
-                      let str = `${person}, `;
+                      const str = `${person}, `;
                       return str;
                     })}
                   </div>
                 ) : (
-                  <div></div>
+                  <div />
                 )}
               </div>
             </div>
           )}
-          {episodes &&
-            episodes.length > 0 &&
-            detailShow === 2 &&
-            episodes.map((episode) => {
-              return (
-                <Episode index={episodes.indexOf(episode)} episode={episode} />
-              );
-            })}
+          {episodes
+            && episodes.length > 0
+            && detailShow === 2
+            && episodes.map((episode) => (
+              <Episode index={episodes.indexOf(episode)} episode={episode} />
+            ))}
           <br />
           <br />
           <br />
@@ -409,5 +412,5 @@ const TV = ({ api_key }) => {
       </div>
     </div>
   );
-};
+}
 export default TV;

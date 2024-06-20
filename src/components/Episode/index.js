@@ -1,9 +1,9 @@
-import React from "react";
-import "./styles.scss";
-import PlayCircleFilledWhiteIcon from "@material-ui/icons/PlayCircleFilledWhite";
+import React from 'react';
+import './styles.scss';
+import PlayCircleFilledWhiteIcon from '@material-ui/icons/PlayCircleFilledWhite';
 
-const Episode = ({ index, episode }) => {
-  const base_img_url = "https://image.tmdb.org/t/p/original/";
+function Episode({ index, episode }) {
+  const base_img_url = 'https://image.tmdb.org/t/p/original/';
   return (
     <div className="EpisodeDiv">
       <div>
@@ -23,7 +23,9 @@ const Episode = ({ index, episode }) => {
             />
           </div>
           <div className="episodeTitleText">
-            {index}. {episode.name}
+            {index}
+            .
+            {episode.name}
           </div>
         </div>
         <br />
@@ -36,6 +38,6 @@ const Episode = ({ index, episode }) => {
       <br />
     </div>
   );
-};
+}
 
 export default Episode;

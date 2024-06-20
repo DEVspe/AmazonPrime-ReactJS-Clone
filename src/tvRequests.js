@@ -1,25 +1,25 @@
-const API_KEY = "989a8027930013244e3c2af17088dcac";
+const API_KEY = '989a8027930013244e3c2af17088dcac';
 
 const tvrequests = [
   {
-    title: "Discover TV Shows",
+    title: 'Discover TV Shows',
     url: `/discover/tv?api_key=${API_KEY}`,
-    media: "tv",
+    media: 'tv',
   },
   {
-    title: "Comedy TV Shows",
+    title: 'Comedy TV Shows',
     url: `/discover/tv?api_key=${API_KEY}&with_genres=35`,
-    media: "tv",
+    media: 'tv',
   },
   {
-    title: "Adventure TV Shows",
+    title: 'Adventure TV Shows',
     url: `/discover/tv?api_key=${API_KEY}&with_genres=12`,
-    media: "tv",
+    media: 'tv',
   },
   {
-    title: "Popular in your Region TV Shows",
+    title: 'Popular in your Region TV Shows',
     url: `/discover/tv?api_key=${API_KEY}&region=IN`,
-    media: "tv",
+    media: 'tv',
   },
 ];
 export default tvrequests;
